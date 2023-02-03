@@ -1,0 +1,56 @@
+/* .search{
+    background-color: rgb(244, 244, 244);
+    margin-top: 50px;
+    height: 50px;
+    width: 500px;
+
+} */
+.logo{
+    height: 100px;
+    width: 100px;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    border: 1px solid black;
+}
+.userIcon{
+    height: 100px;
+    width: 100px;
+    margin-top: 20px;
+}
+.nav-items>ul{
+    list-style-type: none;
+    display: flex;
+    /* margin-right: 50px; */
+    
+}
+.nav-items>ul>li{
+    /* display: flex; */
+    padding: 10px;
+    
+
+}
+.card{
+    width: 200px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+}
+.card>img{
+    height: 200px;
+    width: 200px;
+}
+.restuarant-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+.shimmer-card{
+    height: 200px;
+    width: 200px;;
+   
+    padding: 10px;
+    margin: 10px;
+    background-color: lightgrey;
+}
