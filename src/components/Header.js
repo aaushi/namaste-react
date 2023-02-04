@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Logo from '../../assets/images/foodvillalogo.jpg';
+import Logo from '../assets/images/foodvillalogo.jpg';
 import Contact from "./Contact";
 const loggedIn = () => {
   return true;

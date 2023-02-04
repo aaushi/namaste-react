@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { restuarantList } from "../constants";
 import ResturantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
@@ -25,7 +26,7 @@ const Body = () => {
     setfilteredRestuarantState(dataJson?.data?.cards[2]?.data?.data?.cards);
   }
 
-  if(!allRestuarantState) return null;
+  if (!allRestuarantState) return null;
 
   //if(filteredRestuarantState.length===0) return <h1>No restuarant match your filter</h1>
 
@@ -54,10 +55,12 @@ const Body = () => {
         </button>
       </div>
       <div className="restuarant-list">
-        {((a=10),console.log(filteredRestuarantState))}
+        {((a = 10), console.log(filteredRestuarantState))}
         {filteredRestuarantState.map((restaurant) => {
           return (
-            <ResturantCard {...restaurant.data} key={restaurant.data.id} />
+            <Link to={"/res/"+restaurant.data.id} key={restaurant.data.id}>
+              <ResturantCard {...restaurant.data}  />
+            </Link>
           );
         })}
       </div>
