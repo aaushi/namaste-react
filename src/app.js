@@ -9,6 +9,7 @@ import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import RestuarantMenu from "./components/RestuarantMenu";
+import Profile from "./components/Profile";
 
 /* const heading1 = React.createElement("h1", { key: "head1" }, "hey heading1");
 const heading2 = React.createElement("h1", { key: "head2" }, "hey heading2");
@@ -44,6 +45,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+        children:[{
+          path:"profile",
+          element:<Profile/>
+        }]
       },
       {
         path: "/contact",
