@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Outlet } from "react-router-dom";
 import ProfileClass from "./ProfileClass";
 import ProfileFunctional from "./Profile";
+import Profile2 from "./ProfileClass2";
 
 
 //functional based component
@@ -34,7 +35,8 @@ class About extends Component{
                 <p> This is namste react course</p>
                 
                 
-                <ProfileClass name={"Aaushi class"}/>
+                <ProfileClass name={"child1"}/>
+                {/* <Profile2 name={"child2 "}/> */}
             </div>
         )
     }

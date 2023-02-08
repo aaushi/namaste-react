@@ -1,30 +1,35 @@
 import React from "react";
+import { json } from "react-router-dom";
 
 class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0,
+      userInfo: {
+        name:"",
+        image:""
+      }
     };
     console.log("child-constructor");
   }
-  componentDidMount(){
+  async componentDidMount(){
+    const data=await fetch("https://api.github.com/users/aaushi");
+    const jsonData=await data.json();
+    console.log(jsonData);
+    this.setState({userInfo:{
+        name:jsonData.name,
+        image:jsonData.avatar_url
+    }})
     console.log("child-componentdidmount");
     }
   render() {
     console.log("child-render");
     return (
       <>
+      
         <h2>Profile class compoenent</h2>
-        <h3>{this.props.name}</h3>
-        <h3>count:{this.state.count}</h3>
-        <button
-          onClick={() => {
-            this.setState({
-              count: 1,
-            });
-          }}
-        >count1</button>
+        <h2>{this.state.userInfo.name}</h2>
+        <img src={this.state.userInfo.image}></img>
       </>
     );
   }
