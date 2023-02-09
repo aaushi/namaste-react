@@ -13,6 +13,7 @@ class Profile extends React.Component {
     console.log("child-constructor");
   }
   async componentDidMount(){
+    console.log("child-componentdidmount");
     const data=await fetch("https://api.github.com/users/aaushi");
     const jsonData=await data.json();
     console.log(jsonData);
@@ -20,7 +21,13 @@ class Profile extends React.Component {
         name:jsonData.name,
         image:jsonData.avatar_url
     }})
-    console.log("child-componentdidmount");
+    console.log("child-componentdidmount-end");
+    }
+    componentDidUpdate(){
+        console.log("child-componentDidUpdate");
+    }
+    componentWillUnmount(){
+        console.log("child-componentWillUnmount");
     }
   render() {
     console.log("child-render");
