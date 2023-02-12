@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { restuarantList } from "../constants";
 import ResturantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import { filterData } from "../utils/helper";
+import useOnline from "../utils/useOnline";
 
 const Body = () => {
   //let searchedText = "KFC";
@@ -26,6 +28,11 @@ const Body = () => {
     setfilteredRestuarantState(dataJson?.data?.cards[2]?.data?.data?.cards);
   }
 
+  const isOnline=useOnline();
+
+  if(!isOnline){
+    return <h2>~~~~~Please check your internet connection~~~~~</h2>
+  }
   if (!allRestuarantState) return null;
 
   //if(filteredRestuarantState.length===0) return <h1>No restuarant match your filter</h1>
@@ -68,14 +75,5 @@ const Body = () => {
   );
 };
 
-function filterData(searchInput, restuarantState) {
-  console.log(searchInput);
-  const filteredData = restuarantState.filter((res) =>
-    res?.data?.name?.toLowerCase()?.includes(searchInput.toLowerCase())
-  );
-  console.log("filtereddata");
-  console.log(filteredData);
-  return filteredData;
-}
 
 export default Body;
