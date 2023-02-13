@@ -1,15 +1,17 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import HeaderComponent from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
 import { IMG_CDN_URL } from "./constants";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import About from "./components/About";
+//import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import RestuarantMenu from "./components/RestuarantMenu";
 import Profile from "./components/Profile";
+import Shimmer from "./components/Shimmer";
+//import Instamart from "./components/Instamart";
 
 /* const heading1 = React.createElement("h1", { key: "head1" }, "hey heading1");
 const heading2 = React.createElement("h1", { key: "head2" }, "hey heading2");
@@ -21,7 +23,9 @@ const divElement = React.createElement("div", { className: "title" }, [
 ]); */
 
 //JSX
+const Instamart = lazy(() => import("./components/Instamart"));
 
+const About = lazy(() => import("./components/About"));
 const AppLayout = () => {
   return (
     <>
@@ -36,19 +40,25 @@ const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
-    errorElement:<Error/>,
-    children:[
+    errorElement: <Error />,
+    children: [
       {
         path: "/",
         element: <Body />,
       },
       {
         path: "/about",
-        element: <About />,
-        children:[{
-          path:"profile",
-          element:<Profile/>
-        }]
+        element: (
+          <Suspense fallback={<h2>Loading.......</h2>}>
+            <About />
+          </Suspense>
+        ),
+        children: [
+          {
+            path: "profile",
+            element: <Profile />,
+          },
+        ],
       },
       {
         path: "/contact",
@@ -58,9 +68,17 @@ const appRouter = createBrowserRouter([
         path: "/res/:id",
         element: <RestuarantMenu />,
       },
-    ]
+      {
+        path: "/instamart",
+        //element: <Instamart />,
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <Instamart />
+          </Suspense>
+        ),
+      },
+    ],
   },
-  
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
