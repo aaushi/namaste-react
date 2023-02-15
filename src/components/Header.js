@@ -17,7 +17,7 @@ const Title = () => (
  {/*  or */}
   <img
   src={Logo}
-  className="logo"
+  className="h-28 p-2"
 />
 </>
 );
@@ -28,15 +28,16 @@ const HeaderComponent = () => {
   const isOnline=useOnline();
 
   return (
-    <div className="header">
+    <div className="flex justify-between bg-pink-50 sm:bg-blue-200 ">
       <Title />
-      <div className="nav-items">
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-          <li><Link to="/cart">Cart</Link></li>
-          <li><Link to="/instamart">Instamart</Link></li>
+      <div className="flex">
+        <ul className="flex py-10">
+
+          <li className="px-2"><Link to="/">Home</Link></li>
+          <li className="px-2"><Link to="/about">About</Link></li>
+          <li className="px-2"><Link to="/contact">Contact</Link></li>
+          <li className="px-2"><Link to="/cart">Cart</Link></li>
+          <li className="px-2"><Link to="/instamart">Instamart</Link></li>
         </ul>
       </div>
       <h2>{isOnline?'✅':'🔴'}</h2>

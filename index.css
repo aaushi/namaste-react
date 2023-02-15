@@ -5,7 +5,7 @@
     width: 500px;
 
 } */
-.logo{
+/* .logo{
     height: 100px;
     width: 100px;
 }
@@ -19,15 +19,15 @@
     height: 100px;
     width: 100px;
     margin-top: 20px;
-}
-.nav-items>ul{
+} */
+/* .nav-items>ul{
     list-style-type: none;
     display: flex;
-    /* margin-right: 50px; */
+    
     
 }
 .nav-items>ul>li{
-    /* display: flex; */
+    
     padding: 10px;
     
 
@@ -56,4 +56,8 @@
 }
 .menu{
     display:flex;
-}
+} */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
