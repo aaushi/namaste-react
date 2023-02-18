@@ -6,7 +6,7 @@ import Shimmer from "./Shimmer";
 import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
 
-const Body = () => {
+const Body = ({user}) => {
   //let searchedText = "KFC";
   const [searchInput, setSearchInput] = useState();
   const [filteredRestuarantState, setfilteredRestuarantState] = useState([]);
@@ -66,7 +66,7 @@ const Body = () => {
         {filteredRestuarantState.map((restaurant) => {
           return (
             <Link to={"/res/"+restaurant.data.id} key={restaurant.data.id}>
-              <ResturantCard {...restaurant.data}  />
+              <ResturantCard {...restaurant.data} user={user} />
             </Link>
           );
         })}
