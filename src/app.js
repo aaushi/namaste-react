@@ -11,7 +11,7 @@ import Contact from "./components/Contact";
 import RestuarantMenu from "./components/RestuarantMenu";
 import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
-//import Instamart from "./components/Instamart";
+import UserContextNew from "./utils/UserContext";
 
 /* const heading1 = React.createElement("h1", { key: "head1" }, "hey heading1");
 const heading2 = React.createElement("h1", { key: "head2" }, "hey heading2");
@@ -21,26 +21,30 @@ const divElement = React.createElement("div", { className: "title" }, [
   heading2,
   heading3,
 ]); */
-
 //JSX
 const Instamart = lazy(() => import("./components/Instamart"));
-
 const About = lazy(() => import("./components/About"));
 const AppLayout = () => {
-
-  const [user,setUser]=useState({
-    name:"aaushi",
-    email:"axsjkd@gamil.com"
-  })
+  const [user, setUser] = useState({
+    name: "sonu",
+    email: "sonu@gmail.com",
+  });
   return (
     <>
-      <HeaderComponent />
-      <Outlet />
-      <Footer />
+      <UserContextNew.Provider
+        value={{
+          user:user,
+          setUser:setUser
+          
+      }}
+      >
+        <HeaderComponent />
+        <Outlet />
+        <Footer />
+      </UserContextNew.Provider>
     </>
   );
 };
-
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -49,8 +53,7 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body user={{ name:"aaushi",
-        email:"axsjkd@gamil.com"}}/>,
+        element: <Body  />,
       },
       {
         path: "/about",

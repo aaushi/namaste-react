@@ -1,16 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { restuarantList } from "../constants";
 import ResturantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
+import UserContextNew from "../utils/UserContext";
 
-const Body = ({user}) => {
+
+const Body = () => {
   //let searchedText = "KFC";
   const [searchInput, setSearchInput] = useState();
   const [filteredRestuarantState, setfilteredRestuarantState] = useState([]);
   const [allRestuarantState, setallRestuarantState] = useState([]);
+  const {user,setUser} = useContext(UserContextNew);
   //const  [searchClicked, setSearchClicked] = useState("false");
 
   useEffect(() => {
@@ -60,6 +63,15 @@ const Body = ({user}) => {
         >
           Search
         </button>
+        <input value={user.name} onChange={e=>setUser({
+          ...user,
+          name:e.target.value,
+          
+        })}></input>
+        <input value={user.email} onChange={e=>setUser({
+          ...user,
+          email:e.target.value
+        })}></input>
       </div>
       <div className="flex flex-wrap">
         {((a = 10), console.log(filteredRestuarantState))}
