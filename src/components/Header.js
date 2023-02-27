@@ -4,6 +4,7 @@ import Logo from '../assets/images/foodvillalogo.jpg';
 import useOnline from "../utils/useOnline";
 import Contact from "./Contact";
 import UserContextNew from "../utils/UserContext";
+import { useSelector } from "react-redux";
 const loggedIn = () => {
   return true;
 };
@@ -30,6 +31,8 @@ const HeaderComponent = () => {
 
   const {user}=useContext(UserContextNew);
 
+  const cartItems=useSelector((store)=>store.cart.items);
+
   return (
     <div className="flex justify-between bg-pink-50 sm:bg-blue-200 ">
       <Title />
@@ -39,7 +42,7 @@ const HeaderComponent = () => {
           <li className="px-2"><Link to="/">Home</Link></li>
           <li className="px-2"><Link to="/about">About</Link></li>
           <li className="px-2"><Link to="/contact">Contact</Link></li>
-          <li className="px-2"><Link to="/cart">Cart</Link></li>
+          <li className="px-2"><Link to="/cart">Cart {cartItems.length} items</Link></li>
           <li className="px-2"><Link to="/instamart">Instamart</Link></li>
         </ul>
       </div>

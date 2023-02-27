@@ -12,6 +12,8 @@ import RestuarantMenu from "./components/RestuarantMenu";
 import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
 import UserContextNew from "./utils/UserContext";
+import { Provider } from "react-redux";
+import store from "./utils/store";
 
 /* const heading1 = React.createElement("h1", { key: "head1" }, "hey heading1");
 const heading2 = React.createElement("h1", { key: "head2" }, "hey heading2");
@@ -30,7 +32,7 @@ const AppLayout = () => {
     email: "sonu@gmail.com",
   });
   return (
-    <>
+    <Provider store={store}>
       <UserContextNew.Provider
         value={{
           user:user,
@@ -42,7 +44,7 @@ const AppLayout = () => {
         <Outlet />
         <Footer />
       </UserContextNew.Provider>
-    </>
+    </Provider>
   );
 };
 const appRouter = createBrowserRouter([
