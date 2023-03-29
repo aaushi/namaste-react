@@ -11,7 +11,9 @@ const useRestaurant = (id) => {
   async function getRestuarantInfo() {
     const data = await fetch(FETCH_MENU_URL + id);
     const dataJson = await data.json();
-    setRestuarant(dataJson.data);
+    //console.log(dataJson.data.cards[0].card.card.info);
+    setRestuarant(dataJson.data.cards[0].card.card.info);
+    
   }
   return restuarant;
 };

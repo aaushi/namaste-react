@@ -14,6 +14,7 @@ import Shimmer from "./components/Shimmer";
 import UserContextNew from "./utils/UserContext";
 import { Provider } from "react-redux";
 import store from "./utils/store";
+import Cart from "./components/Cart";
 
 /* const heading1 = React.createElement("h1", { key: "head1" }, "hey heading1");
 const heading2 = React.createElement("h1", { key: "head2" }, "hey heading2");
@@ -78,6 +79,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/res/:id",
         element: <RestuarantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/instamart",

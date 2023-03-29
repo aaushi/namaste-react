@@ -20,7 +20,7 @@ const ResturantCard = ({
           }
         />
         <h2 className="font-bold">{name}</h2>
-        <h3>{cuisines.join(",")}</h3>
+        <h3>{cuisines.join(",")}</h3> 
         <h4 className="">{lastMileTravelString}</h4>
         <h5>{user.name}</h5>
         <h6>{user.email}</h6>
