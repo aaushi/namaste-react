@@ -1,4 +1,4 @@
-import { useEffect, useState,useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { restuarantList } from "../constants";
 import ResturantCard from "./RestaurantCard";
@@ -6,14 +6,15 @@ import Shimmer from "./Shimmer";
 import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
 import UserContextNew from "../utils/UserContext";
-
+import { Input } from "@material-tailwind/react";
 
 const Body = () => {
   //let searchedText = "KFC";
   const [searchInput, setSearchInput] = useState();
   const [filteredRestuarantState, setfilteredRestuarantState] = useState([]);
   const [allRestuarantState, setallRestuarantState] = useState([]);
-  const {user,setUser} = useContext(UserContextNew);
+  const { user, setUser } = useContext(UserContextNew);
+  
   //const  [searchClicked, setSearchClicked] = useState("false");
 
   useEffect(() => {
@@ -31,10 +32,10 @@ const Body = () => {
     setfilteredRestuarantState(dataJson?.data?.cards[2]?.data?.data?.cards);
   }
 
-  const isOnline=useOnline();
+  const isOnline = useOnline();
 
-  if(!isOnline){
-    return <h2>~~~~~Please check your internet connection~~~~~</h2>
+  if (!isOnline) {
+    return <h2>~~~~~Please check your internet connection~~~~~</h2>;
   }
   if (!allRestuarantState) return null;
 
@@ -44,26 +45,19 @@ const Body = () => {
     <Shimmer />
   ) : (
     <>
-      <div className="search-container p-5 bg-pink-50 my-5">
-        <input
-          className="search-input focus:bg-yellow-200"
-          type="text"
-          placeholder="Search"
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-        />
-        <button
-          className="search-btn p-2 m-2 bg-blue-400 text-white rounded-md"
-          onClick={() => {
+    <div className="flex justify-end">
+    <div className="w-72 p-2 m-2 ">
+        <Input label="Search" value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)} icon={<i className="fas fa-heart"  onClick={() => {
             //console.log(restuarantState);
             const data = filterData(searchInput, allRestuarantState);
-
             setfilteredRestuarantState(data);
-          }}
-        >
-          Search
-        </button>
-        <input value={user.name} onChange={e=>setUser({
+          }}/>} />
+      </div>
+    </div>
+      
+     
+        {/* <input value={user.name} onChange={e=>setUser({
           ...user,
           name:e.target.value,
           
@@ -71,13 +65,14 @@ const Body = () => {
         <input value={user.email} onChange={e=>setUser({
           ...user,
           email:e.target.value
-        })}></input>
-      </div>
+        })}></input> */}
+      
       <div className="flex flex-wrap">
         {((a = 10), console.log(filteredRestuarantState))}
         {filteredRestuarantState.map((restaurant) => {
+          console.log(restaurant.data);
           return (
-            <Link to={"/res/"+restaurant.data.id} key={restaurant.data.id}>
+            <Link to={"/res/" + restaurant.data.id} key={restaurant.data.id}>
               <ResturantCard {...restaurant.data} user={user} />
             </Link>
           );
@@ -86,6 +81,5 @@ const Body = () => {
     </>
   );
 };
-
 
 export default Body;

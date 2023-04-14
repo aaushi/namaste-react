@@ -4,10 +4,13 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: {
     items: [],
+    restaurant:[]
   },
   reducers: {
+    addRestaurant: (state, action) => {
+      state.restaurant.push(action.payload);
+    },
     addItem: (state, action) => {
-      console.log(action);
       state.items.push(action.payload);
     },
     removeItem: (state, action) => {
@@ -21,6 +24,6 @@ const cartSlice = createSlice({
 
 
 
-export const { addItem, removeItem, clearCart } = cartSlice.actions;
+export const { addRestaurant, addItem, removeItem, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
