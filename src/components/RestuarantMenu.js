@@ -72,7 +72,7 @@ const RestuarantMenu = () => {
 
       <div className=" w-4/5  divide-y-2">
        
-        <ul>
+        <ul key={Math.random()} data-testid="menu">
           {Object.values(restuarantMenu).map((item) => (
             <>
             <div className="flex justify-between items-center h-56  ">
@@ -90,7 +90,7 @@ const RestuarantMenu = () => {
                   src={IMG_CDN_URL + item.card?.info?.imageId}
                   className="h-28 p-2 "
                 />
-                <Button  onClick={() => {addFoodItem(item) ; addRestaurantDetails(restuarant)}}>
+                <Button  data-testid="add-btn" onClick={() => {addFoodItem(item) ; addRestaurantDetails(restuarant)}}>
                   Add
                 </Button>
               </div>
