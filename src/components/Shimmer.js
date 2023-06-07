@@ -1,10 +1,10 @@
 const Shimmer = () => {
   return (
-    <div className="restuarant-list">
+    <div className="restuarant-list" data-testid="shimmer">
       {Array(10)
         .fill("")
         .map((e,index) => (
-          <div key="index" className="shimmer-card"></div>
+          <div key={Math.random()} className="shimmer-card"></div>
         ))}
     </div>
   );

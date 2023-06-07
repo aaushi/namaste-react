@@ -18,7 +18,7 @@ const Title = () => (
   /> */}
 
     {/*  or */}
-    <img src={Logo} className="h-28 p-2" />
+    <img data-testid="logo" src={Logo} className="h-28 p-2" />
   </>
 );
 
@@ -56,10 +56,10 @@ const HeaderComponent = () => {
             <Link to="/contact">Contact</Link>
           </li>
           <IconButton color="amber" size="sm">
-            <i class="fa-solid fa-cart-shopping"></i>
+            <i className="fa-solid fa-cart-shopping"></i>
           </IconButton>
-          <li className="px-2 my-1 text-xl">
-            <Link to="/cart">Cart({cartItems.length})</Link>
+          <li  className="px-2 my-1 text-xl">
+            <Link data-testid="cart" to="/cart">Cart({cartItems.length})</Link>
           </li>
           {/*  <IconButton color="amber" size="sm">
             <i className="fa-sharp fa-solid fa-house" />

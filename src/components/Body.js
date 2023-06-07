@@ -9,8 +9,7 @@ import UserContextNew from "../utils/UserContext";
 import { Input } from "@material-tailwind/react";
 
 const Body = () => {
-  //let searchedText = "KFC";
-  const [searchInput, setSearchInput] = useState();
+  const [searchInput, setSearchInput] = useState("");
   const [filteredRestuarantState, setfilteredRestuarantState] = useState([]);
   const [allRestuarantState, setallRestuarantState] = useState([]);
   const { user, setUser } = useContext(UserContextNew);
@@ -45,15 +44,15 @@ const Body = () => {
     <Shimmer />
   ) : (
     <>
-    <div className="flex justify-end">
-    <div className="w-72 p-2 m-2 ">
-        <Input label="Search" value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)} icon={<i className="fas fa-heart"  onClick={() => {
+    <div className="flex justify-end" >
+    <div className="w-72 p-2 m-2 " >
+        <Input label="Search" value={searchInput} data-testid='search-input'
+          onChange={(e) => setSearchInput(e.target.value)}   icon={<i className="fas fa-heart" data-testid='search'  onClick={() => {
             //console.log(restuarantState);
             const data = filterData(searchInput, allRestuarantState);
             setfilteredRestuarantState(data);
           }}/>} />
-      </div>
+      </div> 
     </div>
       
      
@@ -67,13 +66,13 @@ const Body = () => {
           email:e.target.value
         })}></input> */}
       
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap" key={Math.random()} data-testId="res-list">
         {((a = 10), console.log(filteredRestuarantState))}
         {filteredRestuarantState.map((restaurant) => {
           console.log(restaurant.data);
           return (
             <Link to={"/res/" + restaurant.data.id} key={restaurant.data.id}>
-              <ResturantCard {...restaurant.data} user={user} />
+              <ResturantCard  {...restaurant.data} user={user} />
             </Link>
           );
         })}
